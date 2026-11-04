@@ -12,7 +12,7 @@ osx.python_version = 3
 osx.kivy_version = 1.9.1
 
 fullscreen = 0
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
 android.allow_backup = True
 
 # Android SDK / NDK setup
