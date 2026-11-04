@@ -36,17 +36,18 @@ jobs:
             zlib1g-dev \
             zip \
             unzip \
-            cmake
+            cmake \
+            build-essential
 
       - name: Install Python Tools
         run: |
           pip install --upgrade pip
-          pip install "cython<3.0.0"
+          pip install --upgrade setuptools wheel packaging
           pip install git+https://github.com/kivy/buildozer.git
           pip install git+https://github.com/kivy/python-for-android.git
-          pip install setuptools wheel packaging
+          pip install "Cython>=3.0.0"
 
-      - name: Build APK
+      - name: Locate buildozer.spec and Build APK
         run: |
           find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
           buildozer -v android debug
@@ -56,3 +57,4 @@ jobs:
         with:
           name: calculator-apk
           path: bin/*.apk
+
