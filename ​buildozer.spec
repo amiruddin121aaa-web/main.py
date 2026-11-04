@@ -5,12 +5,9 @@ package.domain = org.test
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
-requirements = python3,kivy==2.2.1
+requirements = python3,kivy==2.2.1,pyjnius
 
 orientation = portrait
-osx.python_version = 3
-osx.kivy_version = 1.9.1
-
 fullscreen = 0
 android.archs = arm64-v8a
 android.allow_backup = True
@@ -20,6 +17,9 @@ android.minapi = 24
 android.ndk_api = 24
 android.ndk = 25b
 android.accept_sdk_license = True
+
+p4a.branch = master
+android.p4a_branch = master
 
 [buildozer]
 log_level = 2
