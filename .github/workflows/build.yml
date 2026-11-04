@@ -46,7 +46,7 @@ jobs:
           pip install git+https://github.com/kivy/python-for-android.git
           pip install setuptools wheel packaging
 
-      - name: Locate buildozer.spec and Build APK
+      - name: Build APK
         run: |
           find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
           buildozer -v android debug
@@ -56,4 +56,3 @@ jobs:
         with:
           name: calculator-apk
           path: bin/*.apk
-
