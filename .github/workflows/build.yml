@@ -43,13 +43,11 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade setuptools wheel packaging
-          pip install "Cython<3.0.0"
-          pip install git+https://github.com/kivy/buildozer.git
-          pip install git+https://github.com/kivy/python-for-android.git
+          pip install "Cython>=3.0.0"
+          pip install buildozer
+          pip install "python-for-android==2024.1.21"
 
       - name: Locate buildozer.spec and Build APK
-        env:
-          PIP_NO_BUILD_ISOLATION: "0"
         run: |
           find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
           buildozer -v android debug
