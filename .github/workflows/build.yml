@@ -38,8 +38,11 @@ jobs:
           pip install "cython<3.0.0"
           pip install buildozer setuptools wheel packaging
 
-      - name: Build APK
+      - name: Locate buildozer.spec and Build APK
         run: |
+          # Agar file kisi subfolder ya galat naam se ho, to root par lana
+          find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
+          ls -la
           yes | buildozer -v android debug
 
       - name: Upload Final APK
