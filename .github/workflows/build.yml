@@ -41,16 +41,20 @@ jobs:
 
       - name: Install Python Tools
         run: |
-          pip install --upgrade pip
-          pip install --upgrade setuptools wheel packaging
-          pip install "Cython>=3.0.0"
-          pip install buildozer
-          pip install "python-for-android==2024.1.21"
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade setuptools wheel packaging
+          python -m pip install "Cython>=3.0.0"
+          python -m pip install buildozer
+          python -m pip install "python-for-android==2024.1.21"
 
       - name: Locate buildozer.spec and Build APK
+        env:
+          PATH: /opt/hostedtoolcache/Python/3.11.17/x64/bin:/opt/hostedtoolcache/Python/3.11.14/x64/bin:/opt/hostedtoolcache/Python/3.11.11/x64/bin:/opt/hostedtoolcache/Python/3.11.9/x64/bin:$PATH
+          C_INCLUDE_PATH: ""
+          CPLUS_INCLUDE_PATH: ""
         run: |
           find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
-          buildozer -v android debug
+          python -m buildozer -v android debug
 
       - name: Upload Final APK
         uses: actions/upload-artifact@v4
