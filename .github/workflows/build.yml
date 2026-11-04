@@ -30,7 +30,8 @@ jobs:
             zlib1g-dev \
             zip \
             unzip \
-            openjdk-17-jdk
+            openjdk-17-jdk \
+            cmake
 
       - name: Install Python Tools
         run: |
@@ -40,10 +41,8 @@ jobs:
 
       - name: Locate buildozer.spec and Build APK
         run: |
-          # Agar file kisi subfolder ya galat naam se ho, to root par lana
           find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
-          ls -la
-          yes | buildozer -v android debug
+          buildozer android debug
 
       - name: Upload Final APK
         uses: actions/upload-artifact@v4
