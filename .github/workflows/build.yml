@@ -47,8 +47,9 @@ jobs:
           python3 -m pip install buildozer
           python3 -m pip install "kivy[base]"
 
-      - name: Build APK
+      - name: Locate buildozer.spec and Build APK
         run: |
+          find . -maxdepth 2 -iname "*buildozer*.spec" -exec cp {} ./buildozer.spec \;
           buildozer -v android debug
 
       - name: Upload Final APK
